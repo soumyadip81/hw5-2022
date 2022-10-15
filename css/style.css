@@ -1,0 +1,173 @@
+/*step 1*/
+/*animate the logo so that the width gets bigger, and the animation lasts for 5seconds*/
+@keyframes mymove {
+    0%   {
+        width: 25px;
+        opacity: 0;
+    }
+    100% {
+        width: 475px;
+        opacity: 1;
+    }
+}
+
+#logo{
+    animation-duration: 5s;
+    animation-name: mymove;
+}
+
+/*step 2*/
+/*background image and font is set*/
+body{
+    font-family: 'Poppins', 'Serif';
+    background: url(../images/concrete_seamless.png), #f1f1f1;
+}
+
+/*step 3*/
+/*header items are displayed a column and aligned in the center*/
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*step4*/
+/*links are displayed as a column and unerlined with a blue color font*/
+.nav_links{
+    display: flex;
+    flex-direction: column;
+    color:blue;
+    text-decoration: underline;
+}
+
+/*step5*/
+/*even when link is visited/clicked on, color and format remains the same as when unvisited*/
+a:visited{
+    color:inherit;
+}
+/*step6*/
+/*top right and top left corner of the card is rounded a bit*/
+.card{
+    border-radius: 50px 50px 0px 0px;
+}
+/*header elements in the card class are styled*/
+.card > header{
+    background: #288088;
+    border: solid 2px #45ADAD;
+    padding-top: 20px;
+    padding-bottom:20px;
+    border-radius: 50px 50px 0px 0px;
+}
+
+/*step 7 and 8*/
+
+/*items in the pricing class have the flex wrap property set to wrap so that each pricing
+  card is in a new line*/
+.pricing {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+/*size of card is set*/
+.card{
+    flex-basis: 450px;
+}
+
+/* step 9 */
+/*images in the gallery are styled to a particular width, border, and margin*/
+.gallery img{
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* step 10 */
+/*gallery content are displayed in the center with the flex wrap property as wrap so that new
+  lines are used when needed*/
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+/*step 11 onwards*/
+/*following css properties are for screens bigger than or equal to 900px*/
+@media screen and (min-width: 900px) {
+    /*header has content in row format*/
+   header{
+    justify-content: space-between;
+    flex-direction: row;
+   }
+
+   .card{
+    flex-basis: 275px;
+   }
+   /*the links are displayed as a row -- side by side*/
+
+   .nav_links{
+    display: flex;
+    flex-direction: row;
+   }
+  /*seecting the first header that is not in main and making sure that it stays in the top position
+   even when scrolling*/
+   a + header{
+    position: sticky;
+    top: 0;
+   }
+   
+  }
+
+/*step 14*/
+  @media (prefers-reduced-motion) {
+    /*if user prefers reduced motion, animation is turned off for the logo*/
+    #logo {
+      animation-name: none;
+    }
+    
+  }
+
+  /*step 15 onwards*/
+  /*css properties for print view */
+  @media print {
+    /*Arial is used as the primary font for the body section, and Helvetica 
+      if Arial is not available*/
+   body{
+    font-family: 'Arial', 'Helvetica';
+    background-image: none;
+   }
+   
+   /*width of nav is set to 100 so that nav links can be scattered*/
+   nav{
+    width: 100%;
+   }
+   /*the different links are in a row format and spaced evenly from each other*/
+   .nav_links{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+   }
+   /*flex wrap is set to none for the pricing section so that the 3 sections
+     are in one line*/
+
+   .pricing{
+    flex-wrap: nowrap;
+   }
+
+   .card{
+    border: 2px solid #45ADDD;
+    flex-basis: 325px;
+   }
+   /*gallery section/images is not visible to the user*/
+   .gallery{
+    display: none;
+   }
+   /*adding thumb emoji after the second list item in each pricing card section*/
+   li:nth-child(2)::after{
+    content: "\1F44D";
+   }
+
+}
